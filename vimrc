@@ -5,7 +5,9 @@ syntax on
 
 " vim-plug
 call plug#begin()
- Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }""" fzf
+ Plug 'prabirshrestha/vim-lsp'
+ Plug 'mattn/vim-lsp-settings'
+ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
  Plug 'junegunn/fzf.vim'
  Plug 'preservim/nerdtree'
  Plug 'Xuyuanp/nerdtree-git-plugin'
