@@ -7,6 +7,8 @@ syntax on
 call plug#begin()
  Plug 'prabirshrestha/vim-lsp'
  Plug 'mattn/vim-lsp-settings'
+ Plug 'prabirshrestha/asyncomplete.vim'
+ Plug 'prabirshrestha/asyncomplete-lsp.vim'
  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
  Plug 'junegunn/fzf.vim'
  Plug 'preservim/nerdtree'
@@ -50,3 +52,22 @@ let g:NERDTreeGitStatusIndicatorMapCustom = {
 
 """ python-syntax
 let g:python_highlight_all = 1
+
+""" lsp settings
+let g:lsp_settings = {
+  \ 'pylsp-all': {
+    \ 'workspace_config': {
+      \ 'pylsp': {
+        \ 'configurationSources': ['flake8'],
+        \ 'plugins': { 
+          \ 'flake8': {
+            \ 'maxLineLength': 100
+          \ },
+          \ 'pycodestyle': {
+            \ 'maxLineLength': 100
+          \ }
+        \ }
+      \ }
+    \ }
+  \ }
+\ }
