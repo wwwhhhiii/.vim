@@ -1,7 +1,5 @@
 # Installation using vim-plug
 
-~NOTE: python-lsp requires pip~
-
 1. Install vim-plug
 ```
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
@@ -9,3 +7,10 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 ```
 
 2. Run `:PlugInstall` from vim
+
+# Language support installation
+
+Open any language file with vim, for example `something.py`, then run `:LspInstallServer`
+
+*NOTE: python-lsp requires pip*
+
