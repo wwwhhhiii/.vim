@@ -16,6 +16,7 @@ call plug#begin()
  Plug 'jremmen/vim-ripgrep'
  Plug 'ryanoasis/vim-devicons'
  Plug 'vim-python/python-syntax'
+ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 call plug#end()
 
 """ fzf
@@ -34,7 +35,7 @@ let g:fzf_vim.preview_window = ['right,50%,<50(up,40%)', 'ctrl-/']
 " toggle nerdtree
 map <C-n> :NERDTreeToggle<CR>
 " find opened buffer in a tree
-map <C-i> :NERDTreeFind<CR>
+map <C-t> :NERDTreeFind<CR>
 
 """ NERDTreeGitPlugin
 let g:NERDTreeGitStatusIndicatorMapCustom = {
