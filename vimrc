@@ -12,6 +12,7 @@ call plug#begin()
  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
  Plug 'junegunn/fzf.vim'
  Plug 'preservim/nerdtree'
+ Plug 'tpope/vim-fugitive'
  Plug 'Xuyuanp/nerdtree-git-plugin'
  Plug 'jremmen/vim-ripgrep'
  Plug 'ryanoasis/vim-devicons'
