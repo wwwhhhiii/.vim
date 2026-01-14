@@ -1,7 +1,19 @@
+syntax on
 set number
 set encoding=UTF-8
 filetype plugin on
-syntax on
+" disable line wrap
+set wrap!
+" set tab to 4 spaces (mainly for go)
+set tabstop=4
+" new blank tab
+noremap <C-t> :tabnew<CR>
+" close whole tab
+noremap <C-UP> :tabclose<CR>
+" next tab
+noremap <C-l> :tabnext<CR>
+" previous tab
+noremap <C-h> :tabprevious<CR>
 
 " vim-plug
 call plug#begin()
@@ -19,6 +31,7 @@ call plug#begin()
  Plug 'vim-python/python-syntax'
  Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
  Plug 'Yggdroot/indentLine'
+ Plug 'altercation/vim-colors-solarized'
 call plug#end()
 
 """ fzf
@@ -37,7 +50,7 @@ let g:fzf_vim.preview_window = ['right,50%,<50(up,40%)', 'ctrl-/']
 " toggle nerdtree
 map <C-n> :NERDTreeToggle<CR>
 " find opened buffer in a tree
-map <C-t> :NERDTreeFind<CR>
+map <C-\> :NERDTreeFind<CR>
 
 """ NERDTreeGitPlugin
 let g:NERDTreeGitStatusIndicatorMapCustom = {
@@ -77,5 +90,7 @@ let g:lsp_settings = {
 
 """ Indent-line
 let g:indentLine_color_term = 239
-" convert tabs to spaces
-:set list lcs=tab:\|\ 
+
+""" color scheme
+set background=dark
+colorscheme solarized
