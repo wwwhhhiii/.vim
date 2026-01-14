@@ -17,6 +17,7 @@ call plug#begin()
  Plug 'ryanoasis/vim-devicons'
  Plug 'vim-python/python-syntax'
  Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+ Plug 'Yggdroot/indentLine'
 call plug#end()
 
 """ fzf
@@ -72,3 +73,8 @@ let g:lsp_settings = {
     \ }
   \ }
 \ }
+
+""" Indent-line
+let g:indentLine_color_term = 239
+" convert tabs to spaces
+:set list lcs=tab:\|\ 
