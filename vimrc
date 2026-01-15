@@ -4,8 +4,9 @@ set encoding=UTF-8
 filetype plugin on
 " disable line wrap
 set wrap!
-" set tab to 4 spaces (mainly for go)
-set tabstop=4
+" set tab to N spaces (mainly for go)
+set ts=2
+
 " new blank tab
 noremap <C-t> :tabnew<CR>
 " close whole tab
@@ -30,8 +31,9 @@ call plug#begin()
  Plug 'ryanoasis/vim-devicons'
  Plug 'vim-python/python-syntax'
  Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
- Plug 'Yggdroot/indentLine'
  Plug 'altercation/vim-colors-solarized'
+ Plug 'nathanaelkane/vim-indent-guides'
+ Plug 'joshdick/onedark.vim'
 call plug#end()
 
 """ fzf
@@ -89,8 +91,15 @@ let g:lsp_settings = {
 \ }
 
 """ Indent-line
-let g:indentLine_color_term = 239
+let g:indent_guides_exclude_filetypes = ['help', 'nerdtree']
+let g:indent_guides_auto_colors = 0
+let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_guide_size = 1
 
 """ color scheme
-set background=dark
-colorscheme solarized
+colorscheme onedark
+
+""" change indent lines colors to match colorscheme
+let g:indent_guides_auto_colors = 0
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd ctermbg=lightgrey
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=darkgrey
