@@ -6,6 +6,12 @@ filetype plugin on
 set wrap!
 " set tab to N spaces (mainly for go)
 set ts=2
+" fix indentation *should be the same value as 'ts'*
+set shiftwidth=2
+" replace tabs with indentation lines (mainly for golang)
+set listchars=tab:\¦\ ,trail:■,extends:>,precedes:<,nbsp:+
+set list
+hi SpecialKey ctermfg=239 ctermbg=NONE
 
 " new blank tab
 noremap <C-t> :tabnew<CR>
@@ -32,8 +38,8 @@ call plug#begin()
  Plug 'vim-python/python-syntax'
  Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
  Plug 'altercation/vim-colors-solarized'
- Plug 'nathanaelkane/vim-indent-guides'
  Plug 'joshdick/onedark.vim'
+ Plug 'Yggdroot/indentLine'
 call plug#end()
 
 """ fzf
@@ -90,16 +96,6 @@ let g:lsp_settings = {
   \ }
 \ }
 
-""" Indent-line
-let g:indent_guides_exclude_filetypes = ['help', 'nerdtree']
-let g:indent_guides_auto_colors = 0
-let g:indent_guides_enable_on_vim_startup = 1
-let g:indent_guides_guide_size = 1
-
 """ color scheme
 colorscheme onedark
 
-""" change indent lines colors to match colorscheme
-let g:indent_guides_auto_colors = 0
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd ctermbg=lightgrey
-autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=darkgrey
