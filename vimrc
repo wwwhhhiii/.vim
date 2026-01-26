@@ -35,7 +35,6 @@ call plug#begin()
  Plug 'Xuyuanp/nerdtree-git-plugin'
  Plug 'jremmen/vim-ripgrep'
  Plug 'ryanoasis/vim-devicons'
- Plug 'vim-python/python-syntax'
  Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
  Plug 'altercation/vim-colors-solarized'
  Plug 'joshdick/onedark.vim'
@@ -78,6 +77,26 @@ let g:NERDTreeGitStatusIndicatorMapCustom = {
 let g:python_highlight_all = 1
 
 """ lsp settings
+if (executable('pylsp'))
+	    au User lsp_setup call lsp#register_server({
+		\ 'name': 'pylsp',
+		\ 'cmd': {server_info->['pylsp']},
+		\ 'allowlist': ['python']
+		\ })
+	endif
+
+function! s:on_lsp_buffer_enabled() abort
+            setlocal omnifunc=lsp#complete
+            setlocal signcolumn=yes
+            nmap <buffer> gd <plug>(lsp-definition)
+            nmap <buffer> <f2> <plug>(lsp-rename)
+       endfunction
+
+augroup lsp_install
+            au!
+            autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
+       augroup END
+
 let g:lsp_settings = {
   \ 'pylsp-all': {
     \ 'workspace_config': {
@@ -95,6 +114,15 @@ let g:lsp_settings = {
     \ }
   \ }
 \ }
+
+function! s:on_lsp_buffer_enabled() abort
+    " add your keybindings here (see https://github.com/prabirshrestha/vim-lsp?tab=readme-ov-file#registering-servers)
+		" TODO disable lint for pylsp-all
+    let l:capabilities = lsp#get_server_capabilities('ruff')
+    if !empty(l:capabilities)
+      let l:capabilities.hoverProvider = v:false
+    endif
+endfunction
 
 """ color scheme
 colorscheme onedark
