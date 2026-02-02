@@ -12,5 +12,6 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 
 Open any language file with vim, for example `something.py`, then run `:LspInstallServer`
 
-*NOTE: python-lsp requires pip*
+*NOTE: python. python-lsp requires pip*
 
+NOTE: rust. apart from installin rust-analyzer lsp: `rustup component add rust-analyzer`

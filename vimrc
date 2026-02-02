@@ -41,6 +41,10 @@ call plug#begin()
  Plug 'Yggdroot/indentLine'
 call plug#end()
 
+""" uncomment to enable debug
+" let g:lsp_log_verbose = 1
+" let g:lsp_log_file = expand('~/vim-lsp.log')
+
 """ fzf
 " search files
 map <C-p> :Files<CR>
@@ -76,14 +80,33 @@ let g:NERDTreeGitStatusIndicatorMapCustom = {
 """ python-syntax
 let g:python_highlight_all = 1
 
-""" lsp settings
+""" python lsp setup
 if (executable('pylsp'))
-	    au User lsp_setup call lsp#register_server({
+	au User lsp_setup call lsp#register_server({
 		\ 'name': 'pylsp',
 		\ 'cmd': {server_info->['pylsp']},
 		\ 'allowlist': ['python']
 		\ })
 	endif
+
+" rust lsp setup
+if executable('rust-analyzer')
+  au User lsp_setup call lsp#register_server({
+        \   'name': 'Rust Language Server',
+        \   'cmd': {server_info->['rust-analyzer']},
+        \   'whitelist': ['rust'],
+        \   'initialization_options': {
+        \     'cargo': {
+        \       'buildScripts': {
+        \         'enable': v:true,
+        \       },
+        \     },
+        \     'procMacro': {
+        \       'enable': v:true,
+        \     },
+        \   },
+        \ })
+endif
 
 function! s:on_lsp_buffer_enabled() abort
             setlocal omnifunc=lsp#complete
@@ -115,14 +138,14 @@ let g:lsp_settings = {
   \ }
 \ }
 
-function! s:on_lsp_buffer_enabled() abort
-    " add your keybindings here (see https://github.com/prabirshrestha/vim-lsp?tab=readme-ov-file#registering-servers)
-		" TODO disable lint for pylsp-all
-    let l:capabilities = lsp#get_server_capabilities('ruff')
-    if !empty(l:capabilities)
-      let l:capabilities.hoverProvider = v:false
-    endif
-endfunction
+" function! s:on_lsp_buffer_enabled() abort
+"     " add your keybindings here (see https://github.com/prabirshrestha/vim-lsp?tab=readme-ov-file#registering-servers)
+" 		" TODO disable lint for pylsp-all
+"     let l:capabilities = lsp#get_server_capabilities('ruff')
+"     if !empty(l:capabilities)
+"       let l:capabilities.hoverProvider = v:false
+"     endif
+" endfunction
 
 """ color scheme
 colorscheme onedark
