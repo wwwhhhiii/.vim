@@ -63,6 +63,9 @@ map <C-n> :NERDTreeToggle<CR>
 " find opened buffer in a tree
 map <C-\> :NERDTreeFind<CR>
 
+set foldmethod=syntax
+set foldlevelstart=99
+
 """ NERDTreeGitPlugin
 let g:NERDTreeGitStatusIndicatorMapCustom = {
                 \ 'Modified'  :'✹',
