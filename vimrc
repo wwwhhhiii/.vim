@@ -63,8 +63,10 @@ map <C-n> :NERDTreeToggle<CR>
 " find opened buffer in a tree
 map <C-\> :NERDTreeFind<CR>
 
-set foldmethod=syntax
+filetype plugin indent on
 set foldlevelstart=99
+autocmd FileType go setlocal foldmethod=syntax
+autocmd FileType python setlocal foldmethod=indent
 
 """ NERDTreeGitPlugin
 let g:NERDTreeGitStatusIndicatorMapCustom = {
