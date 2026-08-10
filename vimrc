@@ -80,6 +80,17 @@ let g:NERDTreeGitStatusIndicatorMapCustom = {
 """ python-syntax
 let g:python_highlight_all = 1
 
+""" go-syntax
+let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_function_calls = 1
+let g:go_highlight_function_parameters = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_extra_types = 1
+let g:go_highlight_build_constraints = 1
+let g:go_highlight_format_strings = 1
+
 """ python lsp setup
 if (executable('pylsp'))
 	au User lsp_setup call lsp#register_server({
@@ -127,10 +138,10 @@ let g:lsp_settings = {
         \ 'configurationSources': ['flake8'],
         \ 'plugins': { 
           \ 'flake8': {
-            \ 'maxLineLength': 100
+            \ 'maxLineLength': 120
           \ },
           \ 'pycodestyle': {
-            \ 'maxLineLength': 100
+            \ 'maxLineLength': 120
           \ }
         \ }
       \ }
